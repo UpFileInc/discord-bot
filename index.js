@@ -130,7 +130,16 @@ client.on(Events.InteractionCreate, async interaction => {
     console.error('Error purging messages:', error);
     await interaction.reply({ content: 'An error occurred while purging messages.', ephemeral: true });
   }
-}
+} else if(commandName === 'ping') {
+    try {
+      interaction.reply({
+        content: `🏓 Latency is ${Date.now() - message.createdTimestamp}ms.\nAPI Latency is ${Math.round(client.ws.ping)}ms`,
+        ephemeral: true,
+      }
+                        } catch (error) {
+      await interaction.reply({ content: 'An error occurred while running this command.', ephemeral: true });
+    }
+  }
 });
 
 client.login(token);
