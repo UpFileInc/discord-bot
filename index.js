@@ -132,10 +132,10 @@ client.on(Events.InteractionCreate, async interaction => {
   }
 } else if(commandName === 'ping') {
     try {
-      interaction.reply({
+      await interaction.reply({
         content: `🏓 Latency is ${Date.now() - message.createdTimestamp}ms.\nAPI Latency is ${Math.round(client.ws.ping)}ms`,
         ephemeral: true,
-      }
+      });
                         } catch (error) {
       await interaction.reply({ content: 'An error occurred while running this command.', ephemeral: true });
     }
